@@ -1,0 +1,27 @@
+<div class="container">
+  <form *ngIf="!showTodo" >           
+     <input autofocus type="text" name="userName"[(ngModel)]="userName" placeholder="Username" >          
+      <input type="password" name="Password" [(ngModel)]="Password" autocomplete="false"  placeholder="Password" >   <button type="button"  (click)="submit()">Login</button>
+     </form>
+
+	<form *ngIf="showTodo" >
+    <button type="button" (click)="logOut()">Logout</button>
+		<div class="form-group">
+		<h1 class="text-center ">Todo App</h1>
+			<div>
+        <span>Total ToDo Count:{{this.toDoCount}} </span>
+       <br>
+			    <input type="text" #todo  class="form-control" placeholder="Add Todo" name="todo" ngModel>
+				<span  (click)="addTodo(todo.value)">
+				<button>add</button></span>
+			</div>
+		</div>
+		<div class="data">
+		<ul *ngIf="todoArray">
+			<li  *ngFor="let todo of todoArray">{{todo}} 
+        <button (click)="deleteItem(todo)" >delete</button>
+      </li>
+		</ul>
+	</div>
+	</form>
+</div>
